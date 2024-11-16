@@ -1,70 +1,70 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { useWeb3 } from '../../../context/Web3Context'
+import { motion } from "framer-motion"
+import { Button } from "../../../components/button"
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/card"
+import { FileText, PlusCircle } from 'lucide-react'
 
-// This data should come from your backend or blockchain in a real application
-const proposals = [
-  {
-    id: '1',
-    title: 'Increase Staking Rewards',
-    description: 'Proposal to increase staking rewards from 5% to 7% APY.',
-    votesFor: 1500,
-    votesAgainst: 500,
-    deadline: '2023-07-01',
-  },
-  {
-    id: '2',
-    title: 'Add New Campaign Category',
-    description: 'Introduce a new category for environmental projects with special incentives.',
-    votesFor: 2000,
-    votesAgainst: 800,
-    deadline: '2023-06-25',
-  },
-]
-
-export default function GovernancePage() {
-  const { address, connect } = useWeb3()
-  const [selectedProposal, setSelectedProposal] = useState<string | null>(null)
-
-  const handleVote = async (proposalId: string, voteType: 'for' | 'against') => {
-    if (!address) {
-      await connect()
-    } else {
-      // Here you would interact with your smart contract to cast the vote
-      console.log(`Voting ${voteType} on proposal ${proposalId}`)
-    }
-  }
-
+export default function Governance() {
   return (
-    <div className="container mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-8">Governance</h1>
-      <div className="space-y-6">
-        {proposals.map((proposal) => (
-          <div key={proposal.id} className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-2">{proposal.title}</h2>
-            <p className="text-gray-600 mb-4">{proposal.description}</p>
-            <div className="flex justify-between items-center mb-4">
-              <span>Votes For: {proposal.votesFor}</span>
-              <span>Votes Against: {proposal.votesAgainst}</span>
-              <span>Deadline: {proposal.deadline}</span>
-            </div>
-            <div className="flex space-x-4">
-              <button
-                onClick={() => handleVote(proposal.id, 'for')}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-              >
-                Vote For
-              </button>
-              <button
-                onClick={() => handleVote(proposal.id, 'against')}
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-              >
-                Vote Against
-              </button>
-            </div>
-          </div>
-        ))}
+    <div className="space-y-8">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold text-white"
+      >
+        Governance
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-xl text-white/60"
+      >
+        Participate in the decision-making process of our platform.
+      </motion.p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Card className="bg-slate-800 border border-slate-700 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardHeader className="border-b border-slate-700 pb-4">
+              <CardTitle className="text-2xl font-bold text-white flex items-center gap-2">
+                <FileText className="w-6 h-6 text-blue-400" />
+                Active Proposals
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <p className="text-white/80 mb-6">Vote on current proposals to shape the future of our platform.</p>
+              <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-300">
+                View Proposals
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Card className="bg-slate-800 border border-slate-700 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <CardHeader className="border-b border-slate-700 pb-4">
+              <CardTitle className="text-2xl font-bold text-white flex items-center gap-2">
+                <PlusCircle className="w-6 h-6 text-green-400" />
+                Create Proposal
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <p className="text-white/80 mb-6">Submit your own proposal for the community to vote on.</p>
+              <Button variant="outline" className="w-full border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition-colors duration-300">
+                Create Proposal
+              </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </div>
   )

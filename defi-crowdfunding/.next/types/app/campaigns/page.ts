@@ -1,4 +1,4 @@
-// File: /workspaces/CreateNCode-ESummit-2024/defi-crowdfunding/src/app/campaigns/page.tsx
+// File: /Users/subhamrakshit/Desktop/CreateNCode-ESummit-2024/defi-crowdfunding/src/app/campaigns/page.tsx
 import * as entry from '../../../../src/app/campaigns/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,61 +1,63 @@
-'use client'
+"use client"
 
-import { useWeb3 } from '../../../context/Web3Context'
-import CampaignCard from '../../../components/CampaignCard'
+import { motion } from "framer-motion"
+import { Button } from "../../../components/button"
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/card"
 
-// This data should come from your backend or blockchain in a real application
-const userCampaigns = [
-  {
-    id: '1',
-    title: 'Innovative Green Energy Project',
-    description: 'Help us develop sustainable energy solutions for a brighter future.',
-    fundingGoal: 100000,
-    currentFunding: 75000,
-    daysLeft: 15,
-  },
-  {
-    id: '2',
-    title: 'Community Art Installation',
-    description: 'Support local artists in creating a landmark piece for our city.',
-    fundingGoal: 50000,
-    currentFunding: 30000,
-    daysLeft: 7,
-  },
-]
-
-export default function ProfilePage() {
-  const { address, connect, disconnect } = useWeb3()
-
+export default function Profile() {
   return (
-    <div className="container mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-8">Your Profile</h1>
-      {address ? (
-        <div>
-          <p className="mb-4">Connected Address: {address}</p>
-          <button
-            onClick={disconnect}
-            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mb-8"
-          >
-            Disconnect Wallet
-          </button>
-          <h2 className="text-2xl font-bold mb-4">Your Campaigns</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {userCampaigns.map((campaign) => (
-              <CampaignCard key={campaign.id} {...campaign} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div>
-          <p className="mb-4">Please connect your wallet to view your profile.</p>
-          <button
-            onClick={connect}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-          >
-            Connect Wallet
-          </button>
-        </div>
-      )}
+    <div className="space-y-8">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold text-white"
+      >
+        Profile
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-xl text-white/60"
+      >
+        Manage your account and view your activity.
+      </motion.p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle>Account Information</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-white/60 mb-2">Wallet Address: 0x1234...5678</p>
+              <p className="text-white/60 mb-4">Joined: January 1, 2023</p>
+              <Button variant="outline">Edit Profile</Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle>Your Activity</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-white/60 mb-2">Campaigns Created: 2</p>
+              <p className="text-white/60 mb-2">Campaigns Backed: 5</p>
+              <p className="text-white/60 mb-4">Total Contributed: 1000 DEFI</p>
+              <Button>View History</Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
     </div>
   )
 }
