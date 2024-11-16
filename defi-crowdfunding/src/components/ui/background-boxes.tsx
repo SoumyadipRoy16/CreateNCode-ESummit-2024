@@ -1,22 +1,21 @@
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
-
-  // Define colors globally using CSS variables
-  let colors = [
-    "var(--sky-300)",
-    "var(--pink-300)",
-    "var(--green-300)",
-    "var(--yellow-300)",
-    "var(--red-300)",
-    "var(--purple-300)",
-    "var(--blue-300)",
-    "var(--indigo-300)",
-    "var(--violet-300)",
+  const colors = [
+    "--sky-300",
+    "--pink-300",
+    "--green-300",
+    "--yellow-300",
+    "--red-300",
+    "--purple-300",
+    "--blue-300",
+    "--indigo-300",
+    "--violet-300",
   ];
 
   const getRandomColor = () => {
@@ -41,15 +40,16 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
         >
           {cols.map((_, j) => (
             <motion.div
-              key={`col-${j}`}
-              className="w-16 h-8 border-r border-t border-slate-700 relative"
               whileHover={{
-                backgroundColor: getRandomColor(),
-                transition: { duration: 0.3 }, // Add transition for smoother hover effect
+                backgroundColor: `var(${getRandomColor()})`,
+                scale: 1.1, // Slightly scale up on hover
+                transition: { duration: 0.3 },
               }}
               animate={{
                 transition: { duration: 2 },
               }}
+              key={`col-${j}`}
+              className="w-16 h-8 border-r border-t border-slate-700 relative"
             >
               {j % 2 === 0 && i % 2 === 0 ? (
                 <svg

@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { useWeb3 } from '../../../../context/Web3Context'
-import ProgressBar from '../../../../components/ProgressBar'
+import { ProgressBar } from '../../../../components/ProgressBar'
 
 // This data should come from your backend or blockchain in a real application
 const campaignData = {
@@ -34,8 +34,13 @@ export default function CampaignDetailPage() {
 
   return (
     <div className="container mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-4">{campaignData.title}</h1>
-      <p className="text-gray-600 mb-6">{campaignData.description}</p>
+      {/* Glass header with blurred background */}
+      <header className="bg-white/30 backdrop-blur-xl text-white py-6 px-8 rounded-lg mb-6 shadow-lg">
+        <h1 className="text-3xl font-bold">{campaignData.title}</h1>
+        <p className="text-lg">{campaignData.description}</p>
+      </header>
+
+      {/* Campaign details */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-8">
         <ProgressBar progress={progress} />
         <div className="flex justify-between items-center mt-4">
@@ -43,6 +48,8 @@ export default function CampaignDetailPage() {
           <span className="text-gray-500">{`${campaignData.daysLeft} days left`}</span>
         </div>
       </div>
+
+      {/* Contribution section */}
       <div className="bg-white shadow-md rounded-lg p-6">
         <h2 className="text-2xl font-bold mb-4">Contribute to this campaign</h2>
         <input

@@ -32,7 +32,12 @@ export default function CreateCampaignPage() {
 
   return (
     <div className="container mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-8">Create a New Campaign</h1>
+      {/* Glass header with blurred background */}
+      <header className="bg-white/30 backdrop-blur-xl text-white py-6 px-8 rounded-lg mb-8 shadow-lg">
+        <h1 className="text-3xl font-bold">Create a New Campaign</h1>
+      </header>
+
+      {/* Form */}
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">

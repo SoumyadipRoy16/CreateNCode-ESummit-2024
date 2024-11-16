@@ -18,7 +18,7 @@
     --indigo-300: #a5b4fc;
     --violet-300: #d8b4fe;
 
-    /* Dark mode color variables */
+    /* Light mode color variables */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -44,45 +44,77 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  /* Dark mode color variables */
+  .dark {
+    --background: 222.2 84% 11.8%;
+    --foreground: 210 40% 18%;
+    --card: 222.2 84% 11.8%;
+    --card-foreground: 210 40% 18%;
+    --popover: 222.2 84% 11.8%;
+    --popover-foreground: 210 40% 18%;
+    --primary: 210 40% 18%;
+    --primary-foreground: 222.2 47.4% 93.2%;
+    --secondary: 217.2 32.6% 37.5%;
+    --secondary-foreground: 210 40% 18%;
+    --muted: 217.2 32.6% 37.5%;
+    --muted-foreground: 215 20.2% 85.1%;
+    --accent: 217.2 32.6% 37.5%;
+    --accent-foreground: 210 40% 18%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 18%;
+    --border: 217.2 32.6% 37.5%;
+    --input: 217.2 32.6% 37.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border; /* Apply border-border globally */
+    /* Apply border-border globally */
+    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
 @layer utilities {
-  /* Background color utilities */
-  .bg-sky-300 {
+  /* Box with unique hover color */
+  .box {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* Hover effects for color variables */
+  .hover\\:bg-sky-300:hover {
     background-color: var(--sky-300);
   }
-  .bg-pink-300 {
+  .hover\\:bg-pink-300:hover {
     background-color: var(--pink-300);
   }
-  .bg-green-300 {
+  .hover\\:bg-green-300:hover {
     background-color: var(--green-300);
   }
-  .bg-yellow-300 {
+  .hover\\:bg-yellow-300:hover {
     background-color: var(--yellow-300);
   }
-  .bg-red-300 {
+  .hover\\:bg-red-300:hover {
     background-color: var(--red-300);
   }
-  .bg-purple-300 {
+  .hover\\:bg-purple-300:hover {
     background-color: var(--purple-300);
   }
-  .bg-blue-300 {
+  .hover\\:bg-blue-300:hover {
     background-color: var(--blue-300);
   }
-  .bg-indigo-300 {
+  .hover\\:bg-indigo-300:hover {
     background-color: var(--indigo-300);
   }
-  .bg-violet-300 {
+  .hover\\:bg-violet-300:hover {
     background-color: var(--violet-300);
   }
 }
