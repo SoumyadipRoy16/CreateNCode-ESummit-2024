@@ -2,20 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  .border-border {
+    border-color: var(--border-color, #e5e7eb); /* Default to gray-300 */
+  }
 
-@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --sky-300: #7dd3fc;
+    --pink-300: #f9a8d4;
+    --green-300: #86efac;
+    --yellow-300: #fde047;
+    --red-300: #f87171;
+    --purple-300: #c4b5fd;
+    --blue-300: #60a5fa;
+    --indigo-300: #a5b4fc;
+    --violet-300: #d8b4fe;
+
+    /* Dark mode color variables */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border; /* Apply border-border globally */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Background color utilities */
+  .bg-sky-300 {
+    background-color: var(--sky-300);
+  }
+  .bg-pink-300 {
+    background-color: var(--pink-300);
+  }
+  .bg-green-300 {
+    background-color: var(--green-300);
+  }
+  .bg-yellow-300 {
+    background-color: var(--yellow-300);
+  }
+  .bg-red-300 {
+    background-color: var(--red-300);
+  }
+  .bg-purple-300 {
+    background-color: var(--purple-300);
+  }
+  .bg-blue-300 {
+    background-color: var(--blue-300);
+  }
+  .bg-indigo-300 {
+    background-color: var(--indigo-300);
+  }
+  .bg-violet-300 {
+    background-color: var(--violet-300);
+  }
 }
