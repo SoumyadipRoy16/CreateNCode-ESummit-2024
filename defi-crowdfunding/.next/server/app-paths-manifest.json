@@ -1,8 +1,5 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/staking/page": "app/staking/page.js",
-  "/governance/page": "app/governance/page.js",
-  "/campaigns/page": "app/campaigns/page.js",
-  "/profile/page": "app/profile/page.js"
+  "/staking/page": "app/staking/page.js"
 }
